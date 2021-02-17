@@ -1,13 +1,14 @@
 # Jacob Wahl
-# <Date>
+# 2/16/21
 #
 # Problem 2.1 - Write code to remove duplicates from an unsorted linked list.
 #               FOLLOW UP: How would you solve this problem if a temporary buffer is not allowed?
 
 from Linked_List import Linked_List
+from random import randint
 
 
-def removeDuplicates(list: Linked_List, use_datastructures=True) -> Linked_List:
+def remove_duplicates(list: Linked_List, use_datastructures=True) -> Linked_List:
 
     if len(list) <= 1:  # List is comprised of 1 or 0 elements
         return list
@@ -48,7 +49,9 @@ def removeDuplicates(list: Linked_List, use_datastructures=True) -> Linked_List:
 
 
 test_case = Linked_List()
-for i in [2, 2, 1, 2]:
-    test_case.append(i)
+length = 10
+for i in range(length):
+    test_case.append(randint(1, 4))
 
-print(removeDuplicates(test_case, False))
+print(test_case)
+print(remove_duplicates(test_case, True))

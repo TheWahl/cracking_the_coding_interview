@@ -1,3 +1,8 @@
+# Jacob Wahl
+# 2/11/21
+#
+# Module implementing singly linked list
+
 class Node:
     def __init__(self, val):
         self.val = val
