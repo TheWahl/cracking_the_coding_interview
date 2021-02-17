@@ -73,7 +73,7 @@ class Linked_List:
 
         self._length -= 1
 
-    def get(self, idx):
+    def get(self, idx, return_node=False):
         if self._length == 0:
             raise IndexError('List is empty')
         elif idx >= self._length or idx < 0:
@@ -83,7 +83,11 @@ class Linked_List:
         while idx != 0:
             cur = cur.next
             idx -= 1
-        return cur.val
+
+        if return_node:
+            return cur
+        else:
+            return cur.val
 
     def find(self, val):
         idx = 0
