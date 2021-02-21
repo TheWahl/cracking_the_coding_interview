@@ -117,6 +117,12 @@ class Linked_List:
 
             return string
 
+    def __iter__(self):
+        cur = self.head
+        while cur != None:
+            yield cur.val
+            cur = cur.next
+
     def __len__(self):
         return self._length
 
