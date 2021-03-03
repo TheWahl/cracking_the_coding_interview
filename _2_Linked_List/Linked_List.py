@@ -117,6 +117,9 @@ class Linked_List:
 
             return string
 
+    def __repr__(self):
+        return self.__str__()
+
     def __iter__(self):
         cur = self.head
         while cur != None:
