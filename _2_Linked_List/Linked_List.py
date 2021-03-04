@@ -8,6 +8,9 @@ class Node:
         self.val = val
         self.next = None
 
+    def __str__(self) -> str:
+        return f'Node( {self.val} )'
+
 
 class Linked_List:
 
@@ -43,14 +46,16 @@ class Linked_List:
 
     def append(self, val):
 
-        n = Node(val)
+        if not isinstance(val, Node):
+            val = Node(val)
+
         if self.isEmpty():
-            self.head = n
+            self.head = val
         else:
             cur = self.head
             while cur.next != None:
                 cur = cur.next
-            cur.next = n
+            cur.next = val
 
         self._length += 1
 
