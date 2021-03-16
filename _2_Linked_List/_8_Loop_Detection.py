@@ -47,6 +47,7 @@ def find_loop(llist: Linked_List) -> Node:
     else:
         return False
 
+    # Finding the beginning of the loop
     fast_runner = llist.head
     slow_runner = slow_runner.next
 
