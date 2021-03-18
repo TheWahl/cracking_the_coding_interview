@@ -24,37 +24,36 @@ class Three_Stack:
         self.size = 0
 
     @classmethod
-    def Stack1(cls):
-        if cls.stack1 == None:
-            cls.stack1 = Three_Stack()
-        return cls.stack1
-
-    @classmethod
-    def Stack2(cls):
-        if cls.stack2 == None:
-            cls.stack2 = Three_Stack()
-        return cls.stack2
-
-    @classmethod
-    def Stack3(cls):
-        if cls.stack3 == None:
-            cls.stack3 = Three_Stack()
-        return cls.stack3
-
-    def __compute_index(self):
-        if self == Three_Stack.stack1:
-            index = self.size * 3 + 0
-        elif self == Three_Stack.stack2:
-            index = self.size * 3 + 1
+    def get_instance(cls, number):
+        if number == 1:
+            if cls.stack1 == None:
+                cls.stack1 = Three_Stack()
+            return cls.stack1
+        elif number == 2:
+            if cls.stack2 == None:
+                cls.stack2 = Three_Stack()
+            return cls.stack2
+        elif number == 3:
+            if cls.stack3 == None:
+                cls.stack3 = Three_Stack()
+            return cls.stack3
         else:
-            index = self.size * 3 + 2
+            raise RuntimeError
+
+    def __compute_index(self, size):
+        if self == Three_Stack.stack1:
+            index = size * 3  # + 0
+        elif self == Three_Stack.stack2:
+            index = size * 3 + 1
+        else:
+            index = size * 3 + 2
 
         return index
 
     def push(self, item):
 
         # Computing which index to insert item at
-        index = self.__compute_index()
+        index = self.__compute_index(self.size)
 
         # Determining if array needs to be enlarged to hold new item
         if index > len(self.arr) - 1:
@@ -72,13 +71,13 @@ class Three_Stack:
 
         self.size -= 1
 
-        index = self.__compute_index()
+        index = self.__compute_index(self.size)
 
         return self.arr[index]
 
     def peek(self):
 
-        index = self.__compute_index()
+        index = self.__compute_index(self.size - 1)
 
         return self.arr[index]
 
@@ -87,9 +86,9 @@ class Three_Stack:
         return True if self.size == 0 else False
 
 
-stack1 = Three_Stack.Stack1()
-stack2 = Three_Stack.Stack2()
-stack3 = Three_Stack.Stack3()
+stack1 = Three_Stack.get_instance(1)
+stack2 = Three_Stack.get_instance(2)
+stack3 = Three_Stack.get_instance(3)
 
 size = 3
 for i in [1, 4, 7]:
