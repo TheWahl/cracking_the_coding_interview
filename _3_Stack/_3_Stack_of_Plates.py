@@ -12,3 +12,32 @@
 #               FOLLOW UP: Implement a function popAt(int index) which
 #                          performs a pop operation on a specific sub-stack.
 #
+
+class Stack:
+
+    def __init__(self) -> None:
+        self.arr = []
+
+    def push(self, val):
+
+        self.arr.append(val)
+
+    def pop(self):
+
+        if self.arr:
+            return self.arr.pop()
+        else:
+            return None
+
+    def peek(self):
+
+        if self.arr:
+            return self.arr[len(self.arr)-1]
+        else:
+            return None
+
+    def isempty(self):
+        return False if self.arr else True
+
+
+class Set_of_Stacks:
