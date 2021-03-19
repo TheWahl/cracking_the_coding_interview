@@ -52,7 +52,7 @@ class Stack:
         return self.arr[len(self.arr)-1].min
 
     def isempty(self):
-        return True if not self.arr else False
+        return False if self.arr else True
 
     def __str__(self) -> str:
         string = ''
