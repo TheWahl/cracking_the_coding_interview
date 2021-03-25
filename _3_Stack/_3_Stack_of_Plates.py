@@ -13,6 +13,9 @@
 #                          performs a pop operation on a specific sub-stack.
 #
 
+from typing import Set
+
+
 class Stack:
 
     def __init__(self) -> None:
@@ -41,3 +44,54 @@ class Stack:
 
 
 class Set_of_Stacks:
+
+    CUR_SIZE = 3
+
+    def __init__(self) -> None:
+        self.stacks = [Stack()]
+        self.cur_stack_idx = 0
+        self.cur_stack_len = 0
+
+    def push(self, val):
+
+        if self.cur_stack_len == self.CUR_SIZE:
+            self.stacks.append(Stack())
+            self.cur_stack_idx += 1
+            self.cur_stack_len = 0
+
+        self.stacks[self.cur_stack_idx].push(val)
+        self.cur_stack_len += 1
+
+    def pop(self):
+
+        if self.cur_stack_len == 0:
+            raise IndexError('Stack is empty')
+
+        val = self.stacks[self.cur_stack_idx].pop()
+        self.cur_stack_len -= 1
+
+        if self.cur_stack_len == 0:
+            if self.cur_stack_idx != 0:
+                self.cur_stack_idx -= 1
+                self.cur_stack_len = self.CUR_SIZE
+
+        return val
+
+    def peek(self):
+
+        if self.cur_stack_len == 0:
+            raise IndexError('Stack is empty')
+
+        return self.stacks[self.cur_stack_idx].peek()
+
+    def isempty(self):
+        return self.cur_stack_idx == 0 and self.cur_stack_len == 0
+
+
+ss = Set_of_Stacks()
+for i in [1, 2, 3, 4, 5, 6, 7, 8]:
+    ss.push(i)
+
+while not ss.isempty():
+    ss.peek()
+    print(ss.pop())
