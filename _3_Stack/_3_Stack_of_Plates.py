@@ -1,5 +1,5 @@
 # Jacob Wahl
-# <Date>
+# 3/18/21
 #
 # Problem 3.3 - Imagine a literal stack of plates. If the stack gets too high,
 #               it might topple. Therefore, in real life, we would likely
