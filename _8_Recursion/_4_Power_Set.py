@@ -9,9 +9,6 @@ def subset(li: list) -> list:
 
 
 def subsetRecursive(li: list, sets: list):
-    # Base Case
-    if not li:
-        return
 
     # Recursive Case
     if li not in sets:
@@ -25,7 +22,7 @@ def subsetRecursive(li: list, sets: list):
     return sets
 
 
-li = [1, 2, 3, 4, 5, 6]
+li = list(range(6))
 sets = subset(li)
 sets.sort(key=lambda x: len(x), reverse=True)
 for i in sets:
